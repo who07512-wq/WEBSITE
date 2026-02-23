@@ -1,18 +1,29 @@
-# Treasure Hunt (Server Validated)
+# Treasure Hunt (Vercel)
 
-This version keeps code validation on the server so participants cannot read the next hints or expected codes from browser JavaScript.
+This project is ready for Vercel with static frontend + serverless API routes.
 
-## Run
+## Local
 
 ```bash
 cd "tesrue hunt"
-TREASURE_PEPPER='change-this-to-a-secret' node server.js
+vercel dev
 ```
 
-Open `http://127.0.0.1:8080`.
+## Deploy to Vercel
 
-## Security notes
+```bash
+cd "tesrue hunt"
+vercel
+vercel --prod
+```
 
-- Keep `TREASURE_PEPPER` secret and different from this sample value.
-- Host only the frontend assets and API; do not expose server source to participants.
-- For production, put this behind HTTPS and add stronger IP-based rate limiting / logging.
+Set environment variable in Vercel project settings:
+
+- `TREASURE_PEPPER`: a long random secret (must be private)
+
+## Security model
+
+- Browser never contains the correct code values.
+- Validation is done in `/api/submit`.
+- Session progress is in a signed token (`sessionToken`) so users cannot tamper stage.
+- Basic brute-force limiting is applied per signed session token.

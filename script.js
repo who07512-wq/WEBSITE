@@ -8,7 +8,7 @@ const message = document.getElementById('message');
 const restartBtn = document.getElementById('restartBtn');
 
 const state = {
-  sessionId: null,
+  sessionToken: null,
   totalStages: 0,
   stageIndex: 0,
   completed: false,
@@ -32,7 +32,7 @@ function updateProgress(total, stageIndex, completed) {
 }
 
 function applyView(payload) {
-  state.sessionId = payload.sessionId ?? state.sessionId;
+  state.sessionToken = payload.sessionToken ?? state.sessionToken;
   state.totalStages = payload.totalStages;
   state.stageIndex = payload.stageIndex;
   state.completed = payload.completed;
@@ -98,7 +98,7 @@ form.addEventListener('submit', async (event) => {
   try {
     const payload = await api('/api/submit', {
       method: 'POST',
-      body: { sessionId: state.sessionId, code },
+      body: { sessionToken: state.sessionToken, code },
     });
 
     applyView(payload);
@@ -115,7 +115,7 @@ restartBtn.addEventListener('click', async () => {
   try {
     const payload = await api('/api/restart', {
       method: 'POST',
-      body: { sessionId: state.sessionId },
+      body: { sessionToken: state.sessionToken },
     });
     applyView(payload);
     setMessage('Hunt restarted.');

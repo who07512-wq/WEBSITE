@@ -1,0 +1,10 @@
+{
+  "name": "tesrue-hunt",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Treasure hunt game for Vercel",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  }
+}
