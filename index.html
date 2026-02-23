@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treasure Hunt</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Puzzle Event</p>
+        <h1>Treasure Hunt</h1>
+        <p class="subtitle">Enter the code you solved to reveal the next hint.</p>
+      </header>
+
+      <section class="card" aria-live="polite">
+        <div class="progress-wrap">
+          <p id="progressText">Hint 1 of 4</p>
+          <div class="progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
+            <span id="progressFill"></span>
+          </div>
+        </div>
+
+        <div class="hint-box">
+          <h2>Current Hint</h2>
+          <p id="hintText"></p>
+        </div>
+
+        <form id="codeForm" class="code-form" autocomplete="off">
+          <label for="codeInput">Enter code</label>
+          <input id="codeInput" name="code" type="text" placeholder="Example: MOON123" required />
+          <button type="submit">Submit Code</button>
+        </form>
+
+        <p id="message" class="message"></p>
+
+        <button id="restartBtn" class="restart" type="button" hidden>Restart Hunt</button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
